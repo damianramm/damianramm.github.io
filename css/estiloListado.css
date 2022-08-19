@@ -1,0 +1,47 @@
+/* MODIFICACIONES DE ESTILO PARA EL LISTADO */
+
+.contenedor {
+    border: 1px solid black;
+    padding: 2rem;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0.3rem ;
+  }
+  
+  h1, h2{
+    text-align: center;
+    margin: 1rem auto;
+  }
+  
+  .texto{
+    order: 2;
+    padding-left: 1rem;
+  }
+  
+  .saldo {
+    order: 3;
+    font-size: x-small;
+  }
+  
+  h3#h3Primero {
+    display: inline-block;
+  }
+  
+  .imgBorder {
+    padding: 2px;
+    border: 1px solid rgb(230,230,230);
+    width: 15.3rem;
+    text-align: center;
+    border-radius: 0.3rem ;
+  }
+  
+  img {
+    max-width: 15rem;
+    order: 1;
+  }
+  
+  .contenedor:hover {
+    background-color: lightgray;
+  }

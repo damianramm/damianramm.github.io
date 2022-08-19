@@ -18,6 +18,8 @@ if (pass.value == 0 || email.value == 0 ){
     return false;
 } else {
     showAlertSuccess();
+    localStorage.setItem('USER', 'true');
     window.location.href="index.html";
 }
 };
+

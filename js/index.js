@@ -12,3 +12,18 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+
+function desconectarse(){
+    localStorage.setItem('USER', 'false');
+}
+
+function validar() {
+    if(localStorage.getItem('USER')){
+        if(localStorage.getItem('USER'== 'false')){
+            window.location = "login.html";
+     }
+} else {
+    window.location = "login.html";
+    alert('Debe logearse correctamente');
+}
+}

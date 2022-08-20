@@ -17,13 +17,14 @@ function desconectarse(){
     localStorage.setItem('USER', 'false');
 }
 
-function validar() {
+function validarUsuario() {
     if(localStorage.getItem('USER')){
-        if(localStorage.getItem('USER'== 'false')){
-            window.location = "login.html";
+        if(localStorage.getItem('USER')  == 'false'){
+            alert('Debe logearse correctamente')
+            window.location.href = "login.html";
      }
-} else {
-    window.location = "login.html";
+    } else {
+    window.location.href = "login.html";
     alert('Debe logearse correctamente');
 }
 }

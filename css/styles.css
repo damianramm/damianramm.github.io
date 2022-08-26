@@ -11,7 +11,23 @@
 
 nav a {
   text-decoration: none;
+  
 }
+
+/* Agregado de logOut*/
+a>img {
+  width: 1.5rem;
+  
+}
+
+/*a.desconectarse {
+  margin-top: -1.2rem;
+}*/
+
+.nav-item:last-child {
+  display: flex;
+}
+
 
 .bd-placeholder-img {
   font-size: 1.125rem;

@@ -27,4 +27,8 @@ function validarUsuario() {
     window.location.href = "login.html";
     alert('Debe logearse correctamente');
 }
+document.getElementById("usuario").innerHTML = localStorage.getItem("usuario");
 }
+
+
+

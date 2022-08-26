@@ -12,8 +12,15 @@ if (pass.value == 0 || email.value == 0 ){
 } else {
     alert("Te has logueado correctamente!") ;
     localStorage.setItem('USER', 'true');
+    localStorage.setItem('usuario', email.value );
     window.location.href="index.html";
 }
 };
+
+
+
+
+
+
 
 

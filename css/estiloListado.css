@@ -1,5 +1,20 @@
 /* MODIFICACIONES DE ESTILO PARA EL LISTADO */
 
+
+h1, h2{
+    text-align: center;
+    margin: 1rem auto;
+  }
+
+#busqueda {
+  margin-right: 4px;
+}
+
+.ocultar {
+  display:none;
+}
+
+/*
 .contenedor {
     border: 1px solid black;
     padding: 2rem;
@@ -10,11 +25,8 @@
     border-radius: 0.3rem ;
   }
   
-  h1, h2{
-    text-align: center;
-    margin: 1rem auto;
-  }
-  
+  */
+  /*
   .texto{
     order: 2;
     padding-left: 1rem;
@@ -45,3 +57,5 @@
   .contenedor:hover {
     background-color: lightgray;
   }
+  */
+

@@ -9,10 +9,7 @@
   font-weight: bold;
 }
 
-nav a {
-  text-decoration: none;
-  
-}
+
 
 /* Agregado de logOut*/
 a>img {
@@ -20,14 +17,14 @@ a>img {
   
 }
 
-/*a.desconectarse {
-  margin-top: -1.2rem;
-}*/
-
 .nav-item:last-child {
   display: flex;
 }
 
+nav a {
+  text-decoration: none;
+  
+}
 
 .bd-placeholder-img {
   font-size: 1.125rem;

@@ -13,22 +13,8 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 });
 
-function desconectarse(){
-    localStorage.setItem('USER', 'false');
-}
 
-function validarUsuario() {
-    if(localStorage.getItem('USER')){
-        if(localStorage.getItem('USER')  == 'false'){
-            alert('Debe logearse correctamente')
-            window.location.href = "login.html";
-     }
-    } else {
-    window.location.href = "login.html";
-    alert('Debe logearse correctamente');
-}
-document.querySelector("li>p").innerHTML = localStorage.getItem("usuario");
-}
+
 
 
 

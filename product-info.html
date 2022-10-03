@@ -7,9 +7,11 @@
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/styleCarrusel.css" rel="stylesheet"-->
 </head>
 
 <body>
@@ -30,17 +32,61 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
+          
           <li class="nav-item">
-          </li>
+              <!--Dropdown button-->
+              <div class="btn-group dropstart">
+                <button id="showUser" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    
+                </button>
+                <ul class="dropdown-menu">
+                 <!-- Dropdown menu  -->
+                 <li><button class="dropdown-item" type="button" id="perfil">Mi Perfil</button></li>
+                 <li><button class="dropdown-item" type="button" id="carrito">Mis Compras</button></li>
+                 <li><button class="dropdown-item" type="button" id="salir">Desconectarse</button></li>
+                </ul>
+              </div>
+            </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="m-5">
+      <div id="articulo" class="m-5"></div>
+      <div id="img-container">
+        <div class="carrousel">
+          <div class="grande">
+              
+          </div>  
+          <ul class="puntos">
+              <li class="punto activo"></li>
+              <li class="punto "></li>
+              <li class="punto"></li>
+              <li class="punto"></li>
+          </ul>
+        </div>
       </div>
+      <div id="comentarios" class="m-5"></div>
+    </div>
+    <div class="m-5">
+      <form class="m-5">
+        <fieldset id="comentar">
+          <label for="comentar">Comentar:</label><br>
+          <textarea id="texto" cols="60" rows="3"></textarea><br>
+          <label for="puntuacion">Puntuanos! Tu opinion nos importa:</label>
+          <select name="puntuacion" id="puntuacion">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <br>
+          <button id="agregar" class="btn btn-dark">Enviar</button>
+        </fieldset>
+      </form><hr>
+      <div style="display:flex; justify-content:space-evenly;" class="m-5" id="related"></div>
     </div>
   </main>
   <footer class="text-muted">

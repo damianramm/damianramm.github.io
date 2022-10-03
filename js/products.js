@@ -29,6 +29,15 @@ function cargarSubtitulo() {
 }
 cargarSubtitulo()
 
+/**********************************************/
+//Funcion 
+/**********************************************/
+
+function setProductID(id) {
+    localStorage.setItem("prodID", id);
+    window.location.href = "product-info.html"
+}
+
 
 
 /**********************************************/
@@ -70,7 +79,7 @@ function sortProducts(criteria, array){
     
  function showProductsList(){
     
-    
+
     let htmlContentToAppend = "";
     for(let product of currentProductsArray){
     
@@ -78,7 +87,7 @@ function sortProducts(criteria, array){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
 
             htmlContentToAppend += `
-            <div onclick="setCatID(${product.id})" class="list-group-item list-group-item-action cursor-active">
+            <div onclick="setProductID(${product.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
@@ -232,5 +241,3 @@ inputBuscar.addEventListener('keyup', (e)=>{
     }
 })
 
-//muestra usuario en el nav
-document.querySelector("li>p").innerHTML = localStorage.getItem("usuario");

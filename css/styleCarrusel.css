@@ -1,0 +1,53 @@
+@charset "UTF-8";
+      
+        
+        .carrousel {
+          width: 90%;
+          max-width: 120em;
+          padding: 2em;
+          overflow: hidden;
+          border: 2px solid gray;
+          border-radius: 5em;
+          margin:auto auto;
+          
+        }
+        
+        .carrousel .grande {
+          width: 400%;
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          align-items: center;
+          transition: all 0.4s ease;
+
+        }
+        
+        .carrousel .img {
+          width: calc( 100% / 4 - 2em);
+          min-height: 10vh;
+        }
+        
+        .carrousel .puntos {
+          list-style-type: none;
+          width: 75%;
+          margin: 1em auto 0;
+          padding: 0.4em ;
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: center;
+          align-items: center;
+          background-color: darkgray;
+          border-radius: 5em;
+        }
+        
+        .carrousel .punto {
+          width: 2em;
+          height: 2em;
+          margin: 1em 1em 0;
+          border-radius: 1em;
+          border: 0.5px solid white;
+        }
+        
+        .carrousel .punto.activo {
+          background-color: lightblue;
+        }

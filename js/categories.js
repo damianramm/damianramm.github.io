@@ -143,4 +143,3 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 });
 
-document.querySelector("li>p").innerHTML = localStorage.getItem("usuario");

@@ -5,7 +5,7 @@ const URLdinamicaIndividual = PRODUCT_INFO_URL + localStorage.getItem("prodID") 
 const URLdinamicaComentario = PRODUCT_INFO_COMMENTS_URL + localStorage.getItem("prodID") + EXT_TYPE;
 
 /***********************************/
-//fecha y hora 
+ //fecha y hora 
 
 var hoy = new Date();
 var ahora = hoy.toLocaleString();
@@ -28,7 +28,26 @@ function setProductID(id) {
     localStorage.setItem("prodID", id);
     window.location.reload()
   }
-/***********************************/
+/***********************************************/
+//Se preparan los datos para exportar al carrito
+/***********************************************/
+
+
+
+/*function precargarInfo(producto) {
+
+let prepararInfo = {}
+
+    prepararInfo = {
+          img: producto.images[0],
+          name: producto.name,
+          currency: producto.currency,
+          cost: producto.cost,
+          cant: 1
+        }
+
+localStorage.setItem('objAñadido', prepararInfo);
+}*/
 
 /***********************************/
 //Estrellas
@@ -94,10 +113,25 @@ fetch(URLdinamicaIndividual)
     .then(re=> re.json())
     .then(data =>{
         let producto = data; 
-         
+        
+        //PREPARA los datos del producto a cargar en un localStorage
+        let prepararInfo = {}
+
+        prepararInfo = {
+            //img: producto.images[0],
+            name: producto.name,
+            currency: producto.currency,
+            cost: producto.cost,
+            cant: 1
+        }
+
+        localStorage.setItem('objPrecargado', JSON.stringify(prepararInfo))
+
         let htmlTitleProduct=
-        `<div style="display:none;" >${producto.id}</div>
-        <h2>${producto.name}</h2><hr>
+        
+        //<div style="display:none;" >${producto.id}</div>
+        `<h2 class="d-inline">${producto.name}</h2>
+        <button id="addCart" class="btn btn-success btn-sm mx-5">Añadir al carrito</button><hr>
         <p><strong>Descripcion:</strong><br>${producto.description}</p>
         <p><strong>Categoria:</strong><br>${producto.category}</p>
         <p><strong>Precio:</strong><br>${producto.currency} ${producto.cost}</p>
@@ -129,7 +163,10 @@ fetch(URLdinamicaIndividual)
                 </div>
             </div>`
         }
-        document.getElementById('related').innerHTML += relatedToAppend 
+        document.getElementById('related').innerHTML += relatedToAppend
+
+    //precargarInfo()
+
     })
 //Solicitud de comentarios
 
@@ -207,7 +244,13 @@ punto[i].classList.add('activo')
 })
 })
 
+/***********************************/
+//DEsafiate 5, carrito de compras
+/***********************************/
 
+/*document.querySelector("#addCart").addEventListener('click', ()=>{
+  precargarInfo()
+})*/
 
 
 

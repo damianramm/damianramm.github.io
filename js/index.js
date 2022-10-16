@@ -1,17 +1,22 @@
-document.addEventListener("DOMContentLoaded", function(){
-    document.getElementById("autos").addEventListener("click", function() {
-        localStorage.setItem("catID", 101);
-        window.location = "products.html"
-    });
-    document.getElementById("juguetes").addEventListener("click", function() {
-        localStorage.setItem("catID", 102);
-        window.location = "products.html"
-    });
-    document.getElementById("muebles").addEventListener("click", function() {
-        localStorage.setItem("catID", 103);
-        window.location = "products.html"
-    });
-});
+
+
+
+function validacion() {
+
+email = document.getElementById('email');
+pass = document.getElementById('pass');
+
+if (pass.value == 0 || email.value == 0 ){
+    alert("Datos incorrectos") ;
+    return false;
+} else {
+    alert("Te has logueado correctamente!") ;
+    localStorage.setItem('usuario', email.value );
+    window.location.href="main.html";
+}
+};
+
+
 
 
 

@@ -45,21 +45,21 @@ let getJSONData = function(url){
 }
 
 function desconectarse(){
-  localStorage.setItem('USER', 'false');
-  localStorage.clear();
+    localStorage.clear();
+   // window.location.href = "login.html";
 }
 
 function validarUsuario() {
-  if(localStorage.getItem('USER')){
-      if(localStorage.getItem('USER')  == 'false'){
-          alert('Debe logearse correctamente')
-          window.location.href = "login.html";
-   }
-  } else {
-  window.location.href = "login.html";
-  alert('Debe logearse correctamente');
+  if(localStorage.getItem('usuario') == undefined || localStorage.getItem('usuario') == null || /^\s+$/.test(localStorage.getItem('usuario')) ){
+    alert('Debe logearse correctamente');
+    window.location.href = "index.html";
+  }
 }
-}
+
+document.querySelector('body').addEventListener('onload', ()=>{
+  validarUsuario()
+  alert("Funcion validarUsuario fue ejecutada")
+});
 
 document.querySelector('#perfil').addEventListener('click', ()=>{
   window.location.href="./my-profile.html";
@@ -71,9 +71,9 @@ document.querySelector('#carrito').addEventListener('click', ()=>{
 
 document.querySelector('#salir').addEventListener('click', ()=>{
   desconectarse();
-  window.location.href="./login.html";
+  window.location.href="./index.html";
 })
 
-document.addEventListener('DOMContentLoaded', validarUsuario());
+
 
 document.querySelector("#showUser").innerHTML = nombre;

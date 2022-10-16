@@ -1,0 +1,15 @@
+h1 {
+	text-align: center;
+}
+
+form{
+	display: flex;
+	justify-content: flex-start;
+}
+
+button {
+	height: 3rem;
+	align-self: flex-end;
+	float: right;
+}
+

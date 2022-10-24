@@ -1,6 +1,6 @@
 
 //URLs y variables
-
+const BOTON_CARRITO         = document.querySelector('#addCart');
 const URLdinamicaIndividual = PRODUCT_INFO_URL + localStorage.getItem("prodID") + EXT_TYPE;
 const URLdinamicaComentario = PRODUCT_INFO_COMMENTS_URL + localStorage.getItem("prodID") + EXT_TYPE;
 
@@ -33,22 +33,31 @@ function setProductID(id) {
 /***********************************************/
 
 
-
-/*function precargarInfo(producto) {
-
-let prepararInfo = {}
-
-    prepararInfo = {
-          img: producto.images[0],
-          name: producto.name,
-          currency: producto.currency,
-          cost: producto.cost,
-          cant: 1
-        }
-
-localStorage.setItem('objAñadido', prepararInfo);
-}*/
-
+BOTON_CARRITO.addEventListener('click', function() { 
+    if (localStorage.getItem("addToCart")) {
+                
+            carrito.push( prodToAdd)
+            console.log(carrito[0])
+    }
+            
+}) ;
+            /* for (let prodToAdd of addToCart) {
+                    if (cartArticles.map(item => item.id).indexOf(prodToAdd.id) < 0) {
+                        
+                        cartArticles.push({
+                            count: 1,
+                            img: prodToAdd.img,
+                            id: prodToAdd.id,
+                            name: prodToAdd.name,
+                            currency: prodToAdd.currency,
+                            cost: prodToAdd.cost,
+                        })
+                        
+                }
+            }
+                
+                */
+          
 /***********************************/
 //Estrellas
 /***********************************/
@@ -114,24 +123,26 @@ fetch(URLdinamicaIndividual)
     .then(data =>{
         let producto = data; 
         
+
+        
         //PREPARA los datos del producto a cargar en un localStorage
         let prepararInfo = {}
 
         prepararInfo = {
-            //img: producto.images[0],
+            image: producto.images[0],
+            id: producto.id,
             name: producto.name,
             currency: producto.currency,
-            cost: producto.cost,
-            cant: 1
+            unitCost: producto.cost,
+            /* cant: 1 */
         }
-
-        localStorage.setItem('objPrecargado', JSON.stringify(prepararInfo))
-
+       
+        localStorage.setItem('addToCart', JSON.stringify(prepararInfo))
+        
         let htmlTitleProduct=
         
         //<div style="display:none;" >${producto.id}</div>
-        `<h2 class="d-inline">${producto.name}</h2>
-        <button id="addCart" class="btn btn-success btn-sm mx-5">Añadir al carrito</button><hr>
+        `<h2 class="d-inline">${producto.name}</h2><hr>
         <p><strong>Descripcion:</strong><br>${producto.description}</p>
         <p><strong>Categoria:</strong><br>${producto.category}</p>
         <p><strong>Precio:</strong><br>${producto.currency} ${producto.cost}</p>
@@ -248,11 +259,29 @@ punto[i].classList.add('activo')
 //DEsafiate 5, carrito de compras
 /***********************************/
 
-/*document.querySelector("#addCart").addEventListener('click', ()=>{
-  precargarInfo()
-})*/
+/*
+let addToCart =  document.querySelector("#addCart");
 
+addToCart.addEventListener('click', ()=>{
+   if (localStorage.getItem("addToCart")) {
+                for (let prodToAdd of JSON.stringify(localStorage.getItem("addToCart"))) {
+                    if (cartArticles.map(item => item.id).indexOf(prodToAdd.id) < 0) {
+                        cartArticles.push({
+                            id: prodToAdd.id,
+                            name: prodToAdd.name,
+                            count: 1,
+                            unitCost: prodToAdd.cost,
+                            currency: prodToAdd.currency,
+                            image: prodToAdd.image
+                        })
+                    }
+                }
+            }
+			
+			
+})
 
+*/
 
     
    

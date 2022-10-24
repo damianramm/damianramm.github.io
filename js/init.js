@@ -6,6 +6,10 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+let carrito = [];
+let prodToAdd = JSON.parse(localStorage.getItem("addToCart"));
+    
+
 //Usuario sin mail
 
 let nombre = localStorage.getItem("usuario");
@@ -43,6 +47,27 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+function mostrarDataCompra(arr) {
+	let HtmlDataCompra = "";
+
+	for(let i = 0; i<arr.length; i++) {
+	precioUnidad = arr[i].unitCost;
+
+	HtmlDataCompra = `
+		<tr>
+    	  <th scope="row"><img style="width: 5rem;" src="${arr[i].image}" alt="${arr[i].name}"></th>
+    	  <td>${arr[i].name}</td>
+    	  <td>${arr[i].currency}  ${precioUnidad}</td>
+    	  <td><input type="number" value=${arr[i].count} id="cantidad" min=1 onchange="subtotal()"></td>
+    	  <td id="subtotal">${arr[i].currency}  ${precioUnidad}</td>
+    	</tr>`}
+
+	console.log(arr);
+	
+	document.querySelector('tbody').innerHTML += HtmlDataCompra;
+}
+
 
 function desconectarse(){
     localStorage.clear();

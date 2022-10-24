@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/styleCart.css" rel="stylesheet">
+  <!--link href="css/styleCart.css" rel="stylesheet"-->
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
@@ -65,8 +65,88 @@
     
       </tbody>
     </table>
-    <div id="container">
-      
+    <div class="m-5">
+      <form >
+        <section class="d-flex justify-content-evenly">
+          <div class="mx-5">
+            <h3>Tipo de envio</h3>
+            <label><input type="radio" name="envio" id="premium"> Premium, 2 a 5 días(15%)</label></br>
+            <label><input type="radio" name="envio" id="express"> Express, 5 a 6 días(7%)</label></br>
+            <label><input type="radio" name="envio" id="standard"> Standard, 12 a 15 días(5%)</label>
+          </div>
+        </br>
+          <div class="mx-5">
+            <h3>Dirección de envio</h3>
+            <label for="calle" >Calle   </label><br>
+            <input class="m-1" id="calle" type="text"><br>
+            <label for="esquina" >Esquina</label></br>
+            <input class="m-1" id="esquina" type="text"></br>
+            <label for="numero">Número  </label></br>
+            <input class="m-1" id="numero" type="number"></br>
+          </div>
+        </section>
+        <section>
+          <div class="mx-5">
+          <hr>
+          <h3>Costos</h3>
+          <ul class="list-group">
+            <li class="d-flex list-group-item justify-content-between">
+              <p>Subtotal</br><i>Costo unitario del producto por cantidad</i></p>
+              <p class="float-end">USD</p>
+            </li>
+              <li class="d-flex list-group-item justify-content-between">
+              <p>Costo de envio</br><i>Segun su tipo de envio</i></p>
+                <p class="float-end" id="costo"></p>
+            </li>
+              <li class="d-flex list-group-item justify-content-between">
+              <p>Total</p>
+                <p class="float-end">USD</p>
+            </li>
+          </ul>
+          
+          </div>
+        </section>
+        <section>
+          <div class="m-5">
+            <hr>
+            <h3 class="m-3">Forma de pago</h3>
+            <small>No ha seleccionado</small><button type="button" class="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target="#modalFormasPago">Seleccionar</button>
+          
+                <!-- Modal -->
+                <div class="modal fade" id="modalFormasPago" tabindex="-1" aria-labelledby="modalFormasPagoLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="modalFormasPagoLabel">Forma de pago</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <label class="form-check-label"><input type="radio" class="form-check-input" name="formaPago"> Tarjeta de credito</label><br>
+                    <hr>
+                    <label for="nroTarjeta">Numero de tarjeta</label><br>
+                    <input type="text" id="nroTarjeta"><br>
+                    <label for="seguridad">Codigo de seguridad</label><br>
+                    <input type="text" id="seguridad"><br>
+                    <label for="vence">Fecha de vencimiento</label><br>
+                    <input type="date" id="vence"><br><br>
+                    <label class="form-check-label" ><input type="radio" class="form-check-input" name="formaPago"> Transferencia bancaria</label><br><hr>
+                    <label for="cuenta">Numero de cuenta</label><br>
+                    <input type="text" id="cuenta">
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              <br>
+            <div class="my-5 d-grid gap-2">
+              <button class="btn btn-primary" type="button">Finalizar compra</button>
+              </div>
+          </div>
+        </section>
+      </form>
     </div>
   </main>
   <footer class="text-muted">

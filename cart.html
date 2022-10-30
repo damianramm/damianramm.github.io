@@ -66,23 +66,23 @@
       </tbody>
     </table>
     <div class="m-5">
-      <form >
+      <form class="needs-validation" novalidate >
         <section class="d-flex justify-content-evenly">
           <div class="mx-5">
             <h3>Tipo de envio</h3>
-            <label><input type="radio" name="envio" id="premium"> Premium, 2 a 5 días(15%)</label></br>
-            <label><input type="radio" name="envio" id="express"> Express, 5 a 6 días(7%)</label></br>
-            <label><input type="radio" name="envio" id="standard"> Standard, 12 a 15 días(5%)</label>
+            <label class="form-check-label"><input required class="form-check-input" type="radio" name="envio" onchange="calcCostoEnvioYTotal()" id="premium"> Premium, 2 a 5 días(15%)</label></br>
+            <label class="form-check-label"><input required class="form-check-input" type="radio" name="envio" onchange="calcCostoEnvioYTotal()" id="express"> Express, 5 a 6 días(7%)</label></br>
+            <label class="form-check-label"><input required class="form-check-input" type="radio" name="envio" onchange="calcCostoEnvioYTotal()" checked id="standard"> Standard, 12 a 15 días(5%)</label>
           </div>
         </br>
           <div class="mx-5">
             <h3>Dirección de envio</h3>
             <label for="calle" >Calle   </label><br>
-            <input class="m-1" id="calle" type="text"><br>
+            <input class="m-1 form-control" required id="calle" type="text"><br>
             <label for="esquina" >Esquina</label></br>
-            <input class="m-1" id="esquina" type="text"></br>
+            <input class="m-1 form-control" required id="esquina" type="text"></br>
             <label for="numero">Número  </label></br>
-            <input class="m-1" id="numero" type="number"></br>
+            <input class="m-1 form-control" required id="numero" type="number"></br>
           </div>
         </section>
         <section>
@@ -92,15 +92,15 @@
           <ul class="list-group">
             <li class="d-flex list-group-item justify-content-between">
               <p>Subtotal</br><i>Costo unitario del producto por cantidad</i></p>
-              <p class="float-end">USD</p>
+              <p class="float-end" id="subtotalLista">USD</p>
             </li>
               <li class="d-flex list-group-item justify-content-between">
               <p>Costo de envio</br><i>Segun su tipo de envio</i></p>
-                <p class="float-end" id="costo"></p>
+                <p class="float-end" id="costo">USD</p>
             </li>
               <li class="d-flex list-group-item justify-content-between">
               <p>Total</p>
-                <p class="float-end">USD</p>
+                <p id="total" class="float-end">USD</p>
             </li>
           </ul>
           
@@ -110,8 +110,8 @@
           <div class="m-5">
             <hr>
             <h3 class="m-3">Forma de pago</h3>
-            <small>No ha seleccionado</small><button type="button" class="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target="#modalFormasPago">Seleccionar</button>
-          
+            <small>No ha seleccionado</small><button type="button" id="modalButton" class="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target="#modalFormasPago">Seleccionar</button>
+            <div id="alertaModal" class="d-none">Debe completar la informacion de pago</div>
                 <!-- Modal -->
                 <div class="modal fade" id="modalFormasPago" tabindex="-1" aria-labelledby="modalFormasPagoLabel" aria-hidden="true">
                   <div class="modal-dialog">
@@ -120,29 +120,27 @@
                     <h5 class="modal-title" id="modalFormasPagoLabel">Forma de pago</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                    <label class="form-check-label"><input type="radio" class="form-check-input" name="formaPago"> Tarjeta de credito</label><br>
-                    <hr>
-                    <label for="nroTarjeta">Numero de tarjeta</label><br>
-                    <input type="text" id="nroTarjeta"><br>
-                    <label for="seguridad">Codigo de seguridad</label><br>
-                    <input type="text" id="seguridad"><br>
-                    <label for="vence">Fecha de vencimiento</label><br>
-                    <input type="date" id="vence"><br><br>
-                    <label class="form-check-label" ><input type="radio" class="form-check-input" name="formaPago"> Transferencia bancaria</label><br><hr>
-                    <label for="cuenta">Numero de cuenta</label><br>
-                    <input type="text" id="cuenta">
+                    <div class="modal-body d-flex flex-column flex-wrap">
+                    <label class="form-check-label"><input required type="radio" class="form-check-input" id="credito" onclick="formaPagoModal()" name="formaPago"> Tarjeta de credito</label><hr>
+                    <label for="nroTarjeta">Numero de tarjeta</label>
+                    <input required type="text" class="m-1 form-control" size="15" id="nroTarjeta"> 
+                    <div class="d-inline">
+                      <label for="seguridad" class="w-25" >Codigo de seguridad<input required type="text" class="m-1 form-control" size="3" id="seguridad"> </label>
+                      <label for="vence" class="w-50 mx-5">Fecha de vencimiento <input required type="date" class="m-1 form-control" size="6" id="vence"></label><br>
+                    </div><br>
+                    <label class="form-check-label" ><input required type="radio" class="m-1 form-check-input" id="transfer" onclick="formaPagoModal()" name="formaPago"> Transferencia bancaria</label><hr>
+                    <label for="cuenta">Numero de cuenta</label>
+                    <input required type="text" class="m-1 form-control" id="cuenta">
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="showAlertaModal()">Close</button>
                     </div>
                   </div>
                   </div>
                 </div>
               <br>
             <div class="my-5 d-grid gap-2">
-              <button class="btn btn-primary" type="button">Finalizar compra</button>
+              <button class="btn btn-primary" id="comprar" type="submit">Finalizar compra</button>
               </div>
           </div>
         </section>
@@ -159,6 +157,10 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+  <div class="alert alert-success alert-dismissible fade d-none" role="alert" id="alert-success">
+    <p>Ha realizado su compra con exito!</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
